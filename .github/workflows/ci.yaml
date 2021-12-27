@@ -1,0 +1,16 @@
+name: ci workflow
+on:
+  push:
+    branches: [ main]
+  pull_request:
+    branches: [ main]
+
+jobs:
+  date-job:
+    runs-on: ubuntu-latest
+    outputs:
+      date: ${{ steps.date.outputs.date }}
+    steps:
+      - name: Set date (UTC)
+        id: date
+        run: echo ::set-output name=date::$(date +'%Y-%m-%d-%H-%M-%S')
