@@ -8,17 +8,16 @@ services:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: postgres
     ports:
-      - "5432:5432"
+      - "5433:5432"
     expose:
-      - 5432
+      - 5433
 
   pgadmin:
-    #localhost:5050
     container_name: pgadmin4_container
     image: dpage/pgadmin4
     restart: always
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: root
+      PGADMIN_DEFAULT_PASSWORD: blackexotics
     ports:
       - "5050:80"

@@ -7,13 +7,13 @@ const cookieParser = require('cookie-parser')
 dotenv.config();
 
 // TODO: We might want to sign the jwt with an object consisting of some of the user's attributes
-export function generateAccessToken(user_id: string, firstname: string, lastname: string) {
+export function generateAccessToken(user_id, firstname, lastname) {
 
   let object = {id: user_id, name: lastname + firstname}
   return jwt.sign(object, process.env.TOKEN_SECRET, { algorithm: "HS256", expiresIn: process.env.ACCESS_TOKEN_LIFESPAN});
 }
 
-export function generateRefreshToken(user_id: string, firstname: string, lastname: string){
+export function generateRefreshToken(user_id, firstname, lastname){
 
   let object = {id: user_id, name: lastname + firstname}
   return jwt.sign(object, process.env.TOKEN_SECRET, { algorithm: "HS256", expiresIn: process.env.REFRESH_TOKEN_LIFESPAN});
