@@ -1,0 +1,39 @@
+{
+  "name": "black-exotics",
+  "version": "1.0.0",
+  "description": "Black Exotics App",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon —exec babel-node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/officemahn/Black-Exotics.git"
+  },
+  "author": "David & Emeka",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/officemahn/Black-Exotics/issues"
+  },
+  "homepage": "https://github.com/officemahn/Black-Exotics#readme",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "module-alias": "^2.2.2",
+    "nodemon": "^2.0.15",
+    "pg": "^8.7.1"
+  },
+  "_moduleAliases": {
+    "@root": ".",
+    "@admin": "./src/auth/admin"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.5",
+    "@babel/node": "^7.16.5",
+    "@babel/preset-env": "^7.16.5"
+  },
+  "type": "commonjs"
+}
