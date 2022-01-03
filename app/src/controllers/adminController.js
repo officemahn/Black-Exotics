@@ -1,5 +1,5 @@
 const admin_service = require('../services/adminService');
-const {get_decoded_data} = require('../util/authLib');
+const {get_decoded_data, generateAccessToken} = require('../util/authLib');
 const validator = require('../util/validator');
 const { cookie_options, STAT_400, STAT_200, auth_cookie_key } = require('../util/constants');
 
@@ -84,7 +84,7 @@ exports.loginAdmin = async (req, res) =>{
         admin = await admin_service.get_admin(req.body.email)
         if(admin.email == req.body.email){
             status = STAT_200
-            access_token = auth_lib.generateAccessToken(admin.id, admin.email, true);
+            access_token = generateAccessToken(admin.id, admin.email, true);
             res.cookie(auth_cookie_key, access_token, cookie_options);
         }else{
             content = 'An admin with the given email does not exist'

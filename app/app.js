@@ -5,12 +5,11 @@ const cookieparser = require('cookie-parser');
 const csurf = require('csurf');
 const admin_routers = require('./src/routes/adminRoute');
 const auth_routers = require('./src/routes/auth');
-const {cookie_options} = require('./src/util/constants');
 
 const app = express();
 app.use(bodyparser.json());
-app.use(cookieparser('secret'));
-app.use(csurf({cookie:cookie_options}));
+app.use(cookieparser());
+app.use(csurf({cookie: true}));
 
 app.use(function (req, res, next) {
     res.cookie('XSRF-TOKEN', req.csrfToken());

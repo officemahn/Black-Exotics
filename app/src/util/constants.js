@@ -1,12 +1,11 @@
 /**
  * signed: encrypted cookie
- * httpOnly: safe from browser manipulation
+ * httpOnly: can't be read via JS
  * secure: only sent via https
  */
 const cookie_options = {
     signed: true,
     // secure: true,
-    httpOnly: true
 }
 
 const STAT_200 = 200
