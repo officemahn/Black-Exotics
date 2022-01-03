@@ -2,7 +2,7 @@
   "name": "black-exotics",
   "version": "1.0.0",
   "description": "Black Exotics App",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "dev": "nodemon —exec babel-node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,12 +18,20 @@
   },
   "homepage": "https://github.com/officemahn/Black-Exotics#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.1",
+    "cookie-parser": "^1.4.6",
+    "csrf": "^3.1.0",
+    "csurf": "^1.11.0",
     "dotenv": "^10.0.0",
+    "email-validator": "^2.0.4",
     "express": "^4.17.2",
+    "express-openid-connect": "^2.5.2",
+    "express-session": "^1.17.2",
     "jsonwebtoken": "^8.5.1",
     "module-alias": "^2.2.2",
     "nodemon": "^2.0.15",
+    "password-validator": "^5.2.1",
     "pg": "^8.7.1"
   },
   "_moduleAliases": {

@@ -1,11 +1,7 @@
 const Admin = {
     id: 0,
     email: '',
-    password: '',
-    encrypted_password: () => {
-        return this.password
-        // needs to be envrypted and returned
-    }
+    password: ''
 };
 
 const User = {
