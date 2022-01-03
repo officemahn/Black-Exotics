@@ -8,7 +8,7 @@ const auth_routers = require('./src/routes/auth');
 
 const app = express();
 app.use(bodyparser.json());
-app.use(cookieparser());
+app.use(cookieparser('secret'));
 app.use(csurf({cookie: true}));
 
 app.use(function (req, res, next) {

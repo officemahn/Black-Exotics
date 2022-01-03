@@ -43,7 +43,7 @@ exports.registerAdmin = async (req, res) => {
             admin = await admin_service.add_admin(req.body.email, req.body.password)
             if(admin.email == req.body.email){
                 status = STAT_200
-                access_token = auth_lib.generateAccessToken(admin.id, admin.email, true);
+                access_token = generateAccessToken(admin.id, admin.email, true);
                 res.cookie(auth_cookie_key, access_token, cookie_options);
             }else{
                 content = 'Could not create admin, please try again'
