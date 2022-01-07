@@ -28,3 +28,23 @@ exports.validate_email = (email) => {
 
     return email_validator.validate(email);
 }
+
+/**
+ * 
+ * @param {string} name 
+ */
+//TODO: Check for symbols - use regex to validate names
+exports.validate_name = (name) => {
+    // return false if a number exists in string
+    for(i = 0; i < name.length; i++){
+        if(!isNaN(name.charAt(i))){
+            return false
+        }
+    }
+    // return true if string is not a number and its length is greater than 2
+    if(name.length > 2 && isNaN(name) && isNaN(parseFloat(name))){
+        return true
+    }
+
+    return false
+}

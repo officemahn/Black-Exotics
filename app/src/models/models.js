@@ -10,7 +10,7 @@ const User = {
     lastname: '',
     email: '',
     password: '',
-    registration_date: ''
+    registration_date: new Date()
 };
 
 const Car = {
