@@ -47,17 +47,17 @@ exports.login = async (req, res) => {
     let status = STAT_400
     let content = ''
 
-    emailIsValid = validator.validate_email(req.body.email);
-    passwordIsValid = validator.validate_password(req.body.password);
+    emailIsValid = validate_email(req.body.email);
+    passwordIsValid = validate_password(req.body.password);
 
     if(emailIsValid && passwordIsValid){
-        admin = await getUserByEmail(req.body.email)
-        if(admin.email != undefined){
+        let user = await getUserByEmail(req.body.email)
+        if(user != undefined){
             status = STAT_200
-            access_token = generateAccessToken(admin.id, admin.email, true);
+            access_token = generateAccessToken(user.id, user.email, true);
             res.cookie(auth_cookie_key, access_token, cookie_options);
         }else{
-            content = 'An admin with the given email does not exist'
+            content = 'A user with the given email does not exist'
         }
     }else{
         content = 'Invalid email or password'
@@ -65,15 +65,3 @@ exports.login = async (req, res) => {
 
     res.status(status).send(content);
 }
-
-// exports.getUser = async (req, res) => {
-    
-// }
-
-
-    // get username and other cred
-    // verify format
-    // add to DB
-    //generate token
-    // create CSRF token and add to cookie
-    //send token and status if all check are valid
