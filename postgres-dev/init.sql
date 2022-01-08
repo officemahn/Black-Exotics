@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS users(
 	id serial PRIMARY KEY,
 	first_name varchar(50) NOT NULL,
 	last_name varchar(50) NOT NULL,
-	email varchar(50) UNIQUE NOT NULL,
+	email TEXT UNIQUE NOT NULL,
 	password varchar(255) NOT NULL,
 	registration_date DATE NOT NULL DEFAULT CURRENT_DATE
 );
@@ -16,7 +16,7 @@ CREATE TABLE cars(
 );
 CREATE TABLE admin(
 	id serial PRIMARY KEY,
-	email varchar(50) UNIQUE NOT NULL,
+	email TEXT UNIQUE NOT NULL,
 	password varchar(255) NOT NULL
 );
 COMMIT;

@@ -4,8 +4,8 @@
   "description": "Black Exotics App",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon —exec babel-node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:dev": "jest && nodemon —exec babel-node server.js",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -41,7 +41,8 @@
   "devDependencies": {
     "@babel/core": "^7.16.5",
     "@babel/node": "^7.16.5",
-    "@babel/preset-env": "^7.16.5"
+    "@babel/preset-env": "^7.16.5",
+    "jest": "^27.4.7"
   },
   "type": "commonjs"
 }
