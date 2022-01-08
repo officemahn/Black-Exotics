@@ -13,10 +13,10 @@ const model = require('../models/models')
 exports.generateAccessToken = (id, email, isAdmin) => {
   let token = undefined
 
-  if(id!=undefined || email != undefined) {
+  if(id != undefined && email != undefined && typeof isAdmin == 'boolean') {
 
     let object = isAdmin? {'id': id, 'email': email, 'role':'admin'}: {'id': id, 'email': email, 'role':'user'}
-    token = jwt.sign({'id': id, 'email': email, 'role':'admin'}, process.env.TOKEN_SECRET, {expiresIn: process.env.TOKEN_LIFESPAN});
+    token = jwt.sign(object, process.env.TOKEN_SECRET, {expiresIn: process.env.TOKEN_LIFESPAN});
   }
 
   return token
@@ -27,18 +27,18 @@ exports.generateAccessToken = (id, email, isAdmin) => {
  * @param {string} token 
  * @returns {JSON}
  */
-exports.get_decoded_data = (token) => {
+exports.get_decoded_data = async (token) => {
 
   result = undefined
-  jwt.verify(token.split(' ')[1], process.env.TOKEN_SECRET, (err, payload) => {
-
-    if(err){
-      console.log(err)
-    }else{
-      result = payload
-    }
-  });
-
+  if(token != undefined){
+    jwt.verify(token, process.env.TOKEN_SECRET, (err, payload) => {
+      if(err){
+        console.log(err)
+      }else{
+        result = payload
+      }
+    });
+  }
   return result
 }
 
@@ -48,20 +48,26 @@ exports.get_decoded_data = (token) => {
  * @returns {string}
  */
 exports.get_hashed_password = async (password) => {
-  
-  return bcrypt.hash(password, 10)
+  result = undefined
+  if(password != undefined){
+    result = await bcrypt.hash(password, 10)
+  }
+
+  return result
 }
 
 /**
  * 
- * @param {string} password1 
- * @param {string} password2 
+ * @param {string} password 
+ * @param {string} hash 
  * @returns {boolean}
  */
-exports.isSamePassword = async (password1, password2) => {
-
-  bcrypt.compare(password1, password2)
-  .then(result => {
-    return result
-  })
+exports.isSamePassword = async (password, hash) => {
+  let isMatch = false
+  if(password != undefined && hash != undefined){
+    if(password.length < hash.length){
+      isMatch = await bcrypt.compare(password, hash)
+    }
+  }
+  return isMatch
 }
