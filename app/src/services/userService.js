@@ -2,7 +2,6 @@ const db = require('../util/db');
 const {User} = require('../models/models');
 const {get_hashed_password, isSamePassword} = require('../util/authLib')
 
-
 /**
  * Pre-conditions: A valid email address
  * @param {string} email 

@@ -1,6 +1,6 @@
 const {User} = require('../models/models');
 const {validate_email, validate_password, validate_name} = require('../util/validator');
-const {addUser, getUserByEmail} = require('../services/userInfoService')
+const {addUser, getUserByEmail} = require('../services/userService')
 const {generateAccessToken} = require('../util/authLib')
 const {auth_cookie_key, cookie_options, STAT_400, STAT_200} = require('../util/constants')
 
